@@ -335,6 +335,73 @@
 
   .model-card.hidden { display: none; }
 
+  /* Fade-in on scroll */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Measurements */
+  .measurements {
+    margin-bottom: 44px;
+    padding: 28px;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+  }
+
+  .measurements-title {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+
+  .measurements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 18px 24px;
+  }
+
+  .measurements-grid span {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .measurements-grid strong {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  /* Legal pages */
+  .legal-section h2 { font-size: 28px; margin-bottom: 24px; }
+  .legal-section h3 { font-size: 16px; margin: 28px 0 8px; }
+  .legal-section p, .legal-section li { color: var(--muted); font-size: 14px; margin-bottom: 10px; }
+  .legal-section ul { padding-left: 20px; }
+  .legal-section a { color: var(--accent); text-decoration: underline; }
+
+  .footer-links {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
   /* Services */
   .services-grid {
     display: grid;
@@ -402,15 +469,15 @@
   <nav>
     <div class="logo">Paula Josie</div>
     <div class="nav-links">
-      <a href="#portfolio">Content</a>
       <a href="#modeling">Modeling</a>
+      <a href="#portfolio">Content</a>
       <a href="#services">Kooperationen</a>
       <a href="#contact">Kontakt</a>
     </div>
   </nav>
 </header>
 
-<section class="hero" style="border-top:none; background-image:url('model-04.jpg');">
+<section class="hero" style="border-top:none; background-image:url('hero.jpg');">
   <div class="hero-copy">
     <div class="eyebrow">Creator · Model</div>
     <h1>Paula<br>Josie</h1>
@@ -437,7 +504,92 @@
   <div class="section-inner" style="max-width: 680px; text-align:center; margin: 0 auto;">
     <div class="eyebrow" style="text-align:center;">Über mich</div>
     <h2>Hey, ich bin Paula</h2>
-    <p class="section-desc" style="margin: 20px auto 0; text-align:center; max-width:560px;">Vor der Kamera bin ich in meinem Element — ob als Gesicht für UGC und Social Ads, mit Alltagssprache und echter Emotion, die im Feed hängen bleibt, oder als Model bei Fashion-, Editorial- und Commercial-Shootings. Mein Fokus: Content und Bilder, die Marken menschlich machen.</p>
+    <p class="section-desc" style="margin: 20px auto 0; text-align:center; max-width:560px;">Model und Creatorin — mit Fokus auf Natürlichkeit, Flow und Leichtigkeit. Vor der Kamera bin ich in meinem Element: ob als Gesicht für UGC und Social Ads, mit Alltagssprache und echter Emotion, die im Feed hängen bleibt, oder als Model bei Fashion-, Editorial- und Commercial-Shootings. Mein Fokus: Content und Bilder, die Marken menschlich machen.</p>
+  </div>
+</section>
+
+<section id="modeling">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Modeling</div>
+        <h2>Portfolio</h2>
+      </div>
+      <p class="section-desc">Portrait, Fashion und Fine Art — nach Kategorie sortiert.</p>
+    </div>
+
+    <div class="measurements">
+      <div class="measurements-title">Maße</div>
+      <div class="measurements-grid">
+        <div><span>Größe</span><strong>173 cm</strong></div>
+        <div><span>Konfektion</span><strong>36</strong></div>
+        <div><span>Brust</span><strong>84 cm</strong></div>
+        <div><span>Taille</span><strong>67 cm</strong></div>
+        <div><span>Hüfte</span><strong>96 cm</strong></div>
+        <div><span>Augen</span><strong>Grün</strong></div>
+        <div><span>Haare</span><strong>Dunkelblond</strong></div>
+        <div><span>Haarlänge</span><strong>Lang</strong></div>
+        <div><span>Haarstruktur</span><strong>Lockig</strong></div>
+        <div><span>Schuhe</span><strong>40/41</strong></div>
+      </div>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">Alle</button>
+      <button class="filter-tab" data-filter="portrait">Portrait</button>
+      <button class="filter-tab" data-filter="fashion">Fashion</button>
+      <button class="filter-tab" data-filter="fineart">Fine Art</button>
+    </div>
+    <div class="grid" id="model-grid">
+      <div class="card model-card" data-category="portrait">
+        <div class="card-thumb"><img src="model-04.jpg" alt="Editorial-Portrait in schwarzer Spitze" loading="lazy"></div>
+        <div class="card-info"><div><h4>Studio Portrait</h4></div><span class="tag">Portrait</span></div>
+      </div>
+      <div class="card model-card" data-category="portrait">
+        <div class="card-thumb"><img src="model-06.jpg" alt="Beauty-Nahaufnahme" loading="lazy"></div>
+        <div class="card-info"><div><h4>Beauty Close-up</h4></div><span class="tag">Portrait</span></div>
+      </div>
+      <div class="card model-card" data-category="portrait">
+        <div class="card-thumb"><img src="model-03.jpg" alt="Moody Portrait in Jeans-Corsage" loading="lazy"></div>
+        <div class="card-info"><div><h4>Moody Light</h4></div><span class="tag">Portrait</span></div>
+      </div>
+      <div class="card model-card" data-category="portrait">
+        <div class="card-thumb"><img src="model-09.jpg" alt="Schwarz-Weiß Fine-Art-Portrait" loading="lazy"></div>
+        <div class="card-info"><div><h4>B&W Portrait</h4><span class="credit">Foto: @Visual_oxy</span></div><span class="tag">Portrait</span></div>
+      </div>
+      <div class="card model-card" data-category="fashion">
+        <div class="card-thumb"><img src="model-10.jpg" alt="Movement-Editorial in weißem Top und weiter Hose" loading="lazy"></div>
+        <div class="card-info"><div><h4>Movement-Editorial</h4></div><span class="tag">Fashion</span></div>
+      </div>
+      <div class="card model-card" data-category="fashion">
+        <div class="card-thumb"><img src="model-02.jpg" alt="Bikini-Portrait an der Küste" loading="lazy"></div>
+        <div class="card-info"><div><h4>Coastal Swimwear</h4></div><span class="tag">Fashion</span></div>
+      </div>
+      <div class="card model-card" data-category="fashion">
+        <div class="card-thumb"><img src="model-01.jpg" alt="Dynamische Yoga-Pose auf einer Dachterrasse" loading="lazy"></div>
+        <div class="card-info"><div><h4>Rooftop Movement</h4></div><span class="tag">Fashion</span></div>
+      </div>
+      <div class="card model-card" data-category="fashion">
+        <div class="card-thumb"><img src="model-07.jpg" alt="Studio-Shooting in Beige" loading="lazy"></div>
+        <div class="card-info"><div><h4>Studio Campaign</h4></div><span class="tag">Fashion</span></div>
+      </div>
+      <div class="card model-card" data-category="fashion">
+        <div class="card-thumb"><img src="model-05.jpg" alt="Lingerie-Kampagne in Rot" loading="lazy"></div>
+        <div class="card-info"><div><h4>Lingerie Campaign</h4></div><span class="tag">Fashion</span></div>
+      </div>
+      <div class="card model-card" data-category="fineart">
+        <div class="card-thumb"><img src="model-08.jpg" alt="Fine-Art-Portrait am Fluss" loading="lazy"></div>
+        <div class="card-info"><div><h4>Fine Art Serie</h4><span class="credit">Foto: @Visual_oxy</span></div><span class="tag">Fine Art</span></div>
+      </div>
+      <div class="card model-card" data-category="fineart">
+        <div class="card-thumb"><img src="model-11.jpg" alt="Fine-Art-Aufnahme am Strand" loading="lazy"></div>
+        <div class="card-info"><div><h4>Fine Art Serie</h4><span class="credit">Foto: @Visual_oxy</span></div><span class="tag">Fine Art</span></div>
+      </div>
+      <div class="card model-card" data-category="fineart">
+        <div class="card-thumb"><img src="model-13.jpg" alt="Fine-Art-Aufnahme am Meer" loading="lazy"></div>
+        <div class="card-info"><div><h4>Fine Art Serie</h4><span class="credit">Foto: @Visual_oxy</span></div><span class="tag">Fine Art</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -453,11 +605,11 @@
     <div class="grid">
       <div class="card">
         <div class="card-thumb"><video controls playsinline preload="metadata" poster="poster-01.jpg"><source src="video-01.mp4" type="video/mp4"></video></div>
-        <div class="card-info"><div><h4>Street-Hook</h4><span>Praxis-Kampagne · Reel</span></div></div>
+        <div class="card-info"><div><h4>Lokaler Content in Leipzig</h4><span>Für dein Unternehmen · Reel</span></div></div>
       </div>
       <div class="card">
         <div class="card-thumb"><video controls playsinline preload="metadata" poster="poster-02.jpg"><source src="video-02.mp4" type="video/mp4"></video></div>
-        <div class="card-info"><div><h4>Produkt-Testimonial</h4><span>Beauty · Reel</span></div></div>
+        <div class="card-info"><div><h4>Dienstleistungstestimonial</h4><span>Zahnarztpraxis · Reel</span></div></div>
       </div>
       <div class="card">
         <div class="card-thumb"><video controls playsinline preload="metadata" poster="poster-03.jpg"><source src="video-03.mp4" type="video/mp4"></video></div>
@@ -466,74 +618,6 @@
       <div class="card">
         <div class="card-thumb"><video controls playsinline preload="metadata" poster="poster-04.jpg"><source src="video-04.mp4" type="video/mp4"></video></div>
         <div class="card-info"><div><h4>Home & Lifestyle</h4><span>Interior · Reel</span></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="modeling">
-  <div class="section-inner">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">Modeling</div>
-        <h2>Portfolio</h2>
-      </div>
-      <p class="section-desc">Ausgewählte Bilder aus Fashion-, Editorial- und Commercial-Shootings.</p>
-    </div>
-    <div class="filter-tabs">
-      <button class="filter-tab active" data-filter="all">Alle</button>
-      <button class="filter-tab" data-filter="fashion">Fashion</button>
-      <button class="filter-tab" data-filter="editorial">Editorial</button>
-      <button class="filter-tab" data-filter="commercial">Commercial</button>
-    </div>
-    <div class="grid" id="model-grid">
-      <div class="card model-card" data-category="fashion">
-        <div class="card-thumb"><img src="model-10.jpg" alt="Movement-Editorial in weißem Top und weiter Hose" loading="lazy"></div>
-        <div class="card-info"><div><h4>Movement-Editorial</h4></div><span class="tag">Fashion</span></div>
-      </div>
-      <div class="card model-card" data-category="fashion">
-        <div class="card-thumb"><img src="model-02.jpg" alt="Bikini-Portrait an der Küste" loading="lazy"></div>
-        <div class="card-info"><div><h4>Coastal Swimwear</h4></div><span class="tag">Fashion</span></div>
-      </div>
-      <div class="card model-card" data-category="fashion">
-        <div class="card-thumb"><img src="model-01.jpg" alt="Dynamische Yoga-Pose auf einer Dachterrasse" loading="lazy"></div>
-        <div class="card-info"><div><h4>Rooftop Movement</h4></div><span class="tag">Fashion</span></div>
-      </div>
-      <div class="card model-card" data-category="editorial">
-        <div class="card-thumb"><img src="model-04.jpg" alt="Editorial-Portrait in schwarzer Spitze" loading="lazy"></div>
-        <div class="card-info"><div><h4>Studio Portrait</h4></div><span class="tag">Editorial</span></div>
-      </div>
-      <div class="card model-card" data-category="editorial">
-        <div class="card-thumb"><img src="model-03.jpg" alt="Moody Portrait in Jeans-Corsage" loading="lazy"></div>
-        <div class="card-info"><div><h4>Moody Light</h4></div><span class="tag">Editorial</span></div>
-      </div>
-      <div class="card model-card" data-category="editorial">
-        <div class="card-thumb"><img src="model-08.jpg" alt="Fine-Art-Portrait am Fluss" loading="lazy"></div>
-        <div class="card-info"><div><h4>Fine Art Serie</h4><span class="credit">Foto: @Visual_oxy</span></div><span class="tag">Editorial</span></div>
-      </div>
-      <div class="card model-card" data-category="editorial">
-        <div class="card-thumb"><img src="model-09.jpg" alt="Schwarz-Weiß Fine-Art-Portrait" loading="lazy"></div>
-        <div class="card-info"><div><h4>Fine Art Serie</h4><span class="credit">Foto: @Visual_oxy</span></div><span class="tag">Editorial</span></div>
-      </div>
-      <div class="card model-card" data-category="editorial">
-        <div class="card-thumb"><img src="model-11.jpg" alt="Fine-Art-Aufnahme am Strand" loading="lazy"></div>
-        <div class="card-info"><div><h4>Fine Art Serie</h4><span class="credit">Foto: @Visual_oxy</span></div><span class="tag">Editorial</span></div>
-      </div>
-      <div class="card model-card" data-category="editorial">
-        <div class="card-thumb"><img src="model-13.jpg" alt="Fine-Art-Aufnahme am Meer" loading="lazy"></div>
-        <div class="card-info"><div><h4>Fine Art Serie</h4><span class="credit">Foto: @Visual_oxy</span></div><span class="tag">Editorial</span></div>
-      </div>
-      <div class="card model-card" data-category="commercial">
-        <div class="card-thumb"><img src="model-07.jpg" alt="Studio-Shooting in Beige" loading="lazy"></div>
-        <div class="card-info"><div><h4>Studio Campaign</h4></div><span class="tag">Commercial</span></div>
-      </div>
-      <div class="card model-card" data-category="commercial">
-        <div class="card-thumb"><img src="model-06.jpg" alt="Beauty-Nahaufnahme" loading="lazy"></div>
-        <div class="card-info"><div><h4>Beauty Close-up</h4></div><span class="tag">Commercial</span></div>
-      </div>
-      <div class="card model-card" data-category="commercial">
-        <div class="card-thumb"><img src="model-05.jpg" alt="Lingerie-Kampagne in Rot" loading="lazy"></div>
-        <div class="card-info"><div><h4>Lingerie Campaign</h4></div><span class="tag">Commercial</span></div>
       </div>
     </div>
   </div>
@@ -579,13 +663,50 @@
       <div class="eyebrow">Kontakt</div>
       <h2>Let's work together</h2>
       <p>Du suchst authentischen Content, ein Model für dein nächstes Shooting oder beides? Schreib mir gerne für eine Kooperation oder Preisanfrage.</p>
-      <a href="mailto:paulajosie.fehringer@gmail.com" class="btn btn-primary">paulajosie.fehringer@gmail.com</a>
+      <a href="mailto:paulajosie.creates@gmail.com" class="btn btn-primary">paulajosie.creates@gmail.com</a>
     </div>
+  </div>
+</section>
+
+<section id="impressum">
+  <div class="section-inner legal-section" style="max-width: 680px;">
+    <h2>Impressum</h2>
+    <p>Angaben gemäß § 5 DDG</p>
+    <p>Paula Fehringer<br>Kuchengartenstraße 10<br>04315 Leipzig<br>Deutschland</p>
+    <h3>Kontakt</h3>
+    <p>E-Mail: <a href="mailto:paulajosie.creates@gmail.com">paulajosie.creates@gmail.com</a></p>
+    <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+    <p>Paula Fehringer (Anschrift wie oben)</p>
+    <h3>EU-Streitschlichtung</h3>
+    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>. Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  </div>
+</section>
+
+<section id="datenschutz">
+  <div class="section-inner legal-section" style="max-width: 680px;">
+    <h2>Datenschutzerklärung</h2>
+    <h3>Verantwortliche Stelle</h3>
+    <p>Paula Fehringer, Kuchengartenstraße 10, 04315 Leipzig — <a href="mailto:paulajosie.creates@gmail.com">paulajosie.creates@gmail.com</a></p>
+    <h3>Hosting</h3>
+    <p>Diese Website wird bei einem externen Hosting-Anbieter gehostet. Beim Aufruf der Seite verarbeitet der Hosting-Anbieter automatisch technische Daten (u. a. IP-Adresse, Datum und Uhrzeit des Zugriffs) in sogenannten Server-Logfiles, um die Seite auszuliefern und die Sicherheit zu gewährleisten.</p>
+    <h3>Google Fonts</h3>
+    <p>Diese Seite bindet Schriftarten von Google Fonts ein, die dabei von Servern von Google LLC geladen werden. Dabei kann deine IP-Adresse an Google übertragen werden.</p>
+    <h3>Externe Links</h3>
+    <p>Diese Seite verlinkt auf externe Plattformen wie Instagram. Für deren Datenverarbeitung sind die jeweiligen Anbieter selbst verantwortlich.</p>
+    <h3>Kontaktaufnahme</h3>
+    <p>Wenn du mich per E-Mail kontaktierst, werden deine Angaben zur Bearbeitung der Anfrage gespeichert.</p>
+    <h3>Deine Rechte</h3>
+    <p>Du hast jederzeit das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung deiner gespeicherten personenbezogenen Daten. Wende dich dazu einfach an die oben genannte E-Mail-Adresse.</p>
   </div>
 </section>
 
 <footer>
   © 2026 Paula Josie — Alle Rechte vorbehalten.
+  <div class="footer-links">
+    <a href="#impressum">Impressum</a>
+    <a href="#datenschutz">Datenschutz</a>
+    <a href="https://www.instagram.com/paula_josie_/" target="_blank" rel="noopener">Instagram</a>
+  </div>
 </footer>
 
 <script>
@@ -602,6 +723,23 @@
         }
       });
     });
+  });
+
+  document.querySelectorAll('.card, .service-card').forEach(function (el) {
+    el.classList.add('fade-in');
+  });
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(function (el) {
+    observer.observe(el);
   });
 </script>
 
