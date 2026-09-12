@@ -505,18 +505,6 @@
     <div class="eyebrow" style="text-align:center;">Über mich</div>
     <h2>Hey, ich bin Paula</h2>
     <p class="section-desc" style="margin: 20px auto 0; text-align:center; max-width:560px;">Model und Creatorin — mit Fokus auf Natürlichkeit, Flow und Leichtigkeit. Vor der Kamera bin ich in meinem Element: ob als Gesicht für UGC und Social Ads, mit Alltagssprache und echter Emotion, die im Feed hängen bleibt, oder als Model bei Fashion-, Editorial- und Commercial-Shootings. Mein Fokus: Content und Bilder, die Marken menschlich machen.</p>
-  </div>
-</section>
-
-<section id="modeling">
-  <div class="section-inner">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">Modeling</div>
-        <h2>Portfolio</h2>
-      </div>
-      <p class="section-desc">Portrait, Fashion und Fine Art — nach Kategorie sortiert.</p>
-    </div>
 
     <div class="measurements">
       <div class="measurements-title">Maße</div>
@@ -533,13 +521,19 @@
         <div><span>Schuhe</span><strong>40/41</strong></div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="filter-tabs">
-      <button class="filter-tab active" data-filter="all">Alle</button>
-      <button class="filter-tab" data-filter="portrait">Portrait</button>
-      <button class="filter-tab" data-filter="fashion">Fashion</button>
-      <button class="filter-tab" data-filter="fineart">Fine Art</button>
+<section id="modeling">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Modeling</div>
+        <h2>Portfolio</h2>
+      </div>
+      <p class="section-desc">Ausgewählte Bilder aus Fashion-, Portrait- und Fine-Art-Shootings.</p>
     </div>
+
     <div class="grid" id="model-grid">
       <div class="card model-card" data-category="portrait">
         <div class="card-thumb"><img src="model-04.jpg" alt="Editorial-Portrait in schwarzer Spitze" loading="lazy"></div>
@@ -710,21 +704,6 @@
 </footer>
 
 <script>
-  document.querySelectorAll('.filter-tab').forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      document.querySelectorAll('.filter-tab').forEach(function (t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-      var filter = tab.getAttribute('data-filter');
-      document.querySelectorAll('.model-card').forEach(function (card) {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
-  });
-
   document.querySelectorAll('.card, .service-card').forEach(function (el) {
     el.classList.add('fade-in');
   });
