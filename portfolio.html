@@ -133,18 +133,17 @@
   .view-link:hover { color: var(--muted); }
 
   .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: start;
-    gap: 3px;
+    columns: 2;
+    column-gap: 3px;
     background: var(--line);
-    border: 1px solid var(--line);
   }
 
   .card {
     background: var(--card-bg);
     overflow: hidden;
     display: block;
+    break-inside: avoid;
+    margin-bottom: 3px;
   }
 
   .card-thumb {
@@ -191,7 +190,7 @@
   @media (max-width: 800px) {
     .nav-links { display: none; }
     section { padding: 60px 20px; }
-    .grid { grid-template-columns: 1fr; }
+    .grid { columns: 1; }
   }
 </style>
 </head>
@@ -254,9 +253,6 @@
       </div>
       <div class="card">
         <div class="card-thumb"><img src="model-08.jpg" alt="Fine-Art-Portrait am Fluss"></div>
-      </div>
-      <div class="card">
-        <div class="card-thumb"><img src="model-11.jpg" alt="Fine-Art-Aufnahme am Strand"></div>
       </div>
       <div class="card">
         <div class="card-thumb"><img src="model-13.jpg" alt="Fine-Art-Aufnahme am Meer"></div>

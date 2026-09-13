@@ -317,11 +317,14 @@
 
   /* Teaser grids — fixed column counts so the last row never leaves gaps */
   .teaser-grid-6 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    columns: 3;
+    column-gap: 2px;
     background: var(--line);
-    border: 1px solid var(--line);
+  }
+
+  .teaser-grid-6 .card {
+    break-inside: avoid;
+    margin-bottom: 2px;
   }
 
   .teaser-grid-4 {
@@ -570,7 +573,7 @@
   .insta-link:hover svg { stroke: var(--muted); }
 
   @media (max-width: 900px) {
-    .teaser-grid-6 { grid-template-columns: repeat(2, 1fr); }
+    .teaser-grid-6 { columns: 2; }
     .teaser-grid-4 { grid-template-columns: repeat(2, 1fr); }
   }
 
@@ -582,7 +585,7 @@
   }
 
   @media (max-width: 520px) {
-    .teaser-grid-6 { grid-template-columns: 1fr; }
+    .teaser-grid-6 { columns: 1; }
     .teaser-grid-4 { grid-template-columns: 1fr; }
   }
 </style>
@@ -657,7 +660,7 @@
       </div>
     </div>
 
-    <div class="teaser-grid-6" style="align-items: start;">
+    <div class="teaser-grid-6">
       <div class="card">
         <div class="card-thumb photo-thumb"><img src="model-04.jpg" alt="Editorial-Portrait in schwarzer Spitze"></div>
       </div>
@@ -665,7 +668,7 @@
         <div class="card-thumb photo-thumb"><img src="model-10.jpg" alt="Movement-Editorial in weißem Top und weiter Hose"></div>
       </div>
       <div class="card">
-        <div class="card-thumb photo-thumb"><img src="model-08.jpg" alt="Fine-Art-Portrait am Fluss"></div>
+        <div class="card-thumb photo-thumb"><img src="model-30.jpg" alt="Schwarz-Weiß Profil-Portrait"></div>
       </div>
       <div class="card">
         <div class="card-thumb photo-thumb"><img src="model-15.jpg" alt="Editorial am Meer im roten Rock"></div>
