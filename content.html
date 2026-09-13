@@ -321,7 +321,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0, rootMargin: '200px 0px' });
 
   document.querySelectorAll('.fade-in').forEach(function (el) {
     observer.observe(el);

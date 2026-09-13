@@ -315,6 +315,23 @@
     display: block;
   }
 
+  /* Teaser grids — fixed column counts so the last row never leaves gaps */
+  .teaser-grid-6 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .teaser-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
   /* Grids */
   .grid {
     display: grid;
@@ -543,11 +560,21 @@
   .insta-link:hover { color: var(--muted); }
   .insta-link:hover svg { stroke: var(--muted); }
 
+  @media (max-width: 900px) {
+    .teaser-grid-6 { grid-template-columns: repeat(2, 1fr); }
+    .teaser-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 800px) {
     .hero-row { grid-template-columns: 1fr; }
     .featured-model { grid-template-columns: 1fr; }
     .nav-links { display: none; }
     section { padding: 60px 20px; }
+  }
+
+  @media (max-width: 520px) {
+    .teaser-grid-6 { grid-template-columns: 1fr; }
+    .teaser-grid-4 { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -577,7 +604,7 @@
   <h1>Paula Josie</h1>
   <div class="hero-row">
     <div class="hero-photo-col">
-      <img src="header.jpg" alt="Paula Josie" loading="lazy">
+      <img src="header.jpg" alt="Paula Josie">
     </div>
     <div class="hero-side">
       <div class="hero-heading">Creatorin &amp; Model</div>
@@ -617,28 +644,28 @@
         <div class="measurements-row"><span>Schuhe</span><strong>40/41</strong></div>
       </div>
       <div class="featured-photo">
-        <img src="model-19.jpg" alt="Paula Josie Portrait" loading="lazy">
+        <img src="model-19.jpg" alt="Paula Josie Portrait">
       </div>
     </div>
 
-    <div class="grid">
+    <div class="teaser-grid-6">
       <div class="card">
-        <div class="card-thumb"><img src="model-04.jpg" alt="Editorial-Portrait in schwarzer Spitze" loading="lazy"></div>
+        <div class="card-thumb"><img src="model-04.jpg" alt="Editorial-Portrait in schwarzer Spitze"></div>
       </div>
       <div class="card">
-        <div class="card-thumb"><img src="model-10.jpg" alt="Movement-Editorial in weißem Top und weiter Hose" loading="lazy"></div>
+        <div class="card-thumb"><img src="model-10.jpg" alt="Movement-Editorial in weißem Top und weiter Hose"></div>
       </div>
       <div class="card">
-        <div class="card-thumb"><img src="model-08.jpg" alt="Fine-Art-Portrait am Fluss" loading="lazy"></div>
+        <div class="card-thumb"><img src="model-08.jpg" alt="Fine-Art-Portrait am Fluss"></div>
       </div>
       <div class="card">
-        <div class="card-thumb"><img src="model-15.jpg" alt="Editorial am Meer im roten Rock" loading="lazy"></div>
+        <div class="card-thumb"><img src="model-15.jpg" alt="Editorial am Meer im roten Rock"></div>
       </div>
       <div class="card">
-        <div class="card-thumb"><img src="model-22.jpg" alt="Editorial in weißer Spitze auf Felsen" loading="lazy"></div>
+        <div class="card-thumb"><img src="model-22.jpg" alt="Editorial in weißer Spitze auf Felsen"></div>
       </div>
       <div class="card">
-        <div class="card-thumb"><img src="model-26.jpg" alt="Portrait in Jeansjacke" loading="lazy"></div>
+        <div class="card-thumb"><img src="model-26.jpg" alt="Portrait in Jeansjacke"></div>
       </div>
     </div>
   </div>
@@ -662,7 +689,7 @@
       </div>
       <p class="section-desc">Ein Einblick in Formate und Projekte.</p>
     </div>
-    <div class="grid">
+    <div class="teaser-grid-4">
       <div class="card">
         <div class="card-thumb"><video controls playsinline preload="metadata" poster="poster-01.jpg"><source src="video-01.mp4" type="video/mp4"></video></div>
         <div class="card-info"><div><h4>Karli1</h4><span>Standort-UGC · Reel</span></div></div>
@@ -793,7 +820,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0, rootMargin: '200px 0px' });
 
   document.querySelectorAll('.fade-in').forEach(function (el) {
     observer.observe(el);
